@@ -3,7 +3,7 @@ atom-bitcoin
 
 Watch the latest selling price for bitcoin while you code!
 
-![](https://www.dropbox.com/s/4lvxmytpicoz9o1/screenshot.png)
+![](https://dl.dropboxusercontent.com/s/4lvxmytpicoz9o1/screenshot.png?dl=1&token_hash=AAEBoVYT77ey684_qqX5ltFAhUOfRdqmxjMUcnuUNxnFTA)
 
 To install
 
