@@ -1,4 +1,4 @@
-atom-bitcoin
+[atom-bitcoin](https://atom.io/packages/atom-bitcoin)
 ============
 
 Watch the latest selling price for bitcoin while you code!
