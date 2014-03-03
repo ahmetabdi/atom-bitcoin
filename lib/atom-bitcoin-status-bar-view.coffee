@@ -19,13 +19,26 @@ class AtomBitcoinStatusBarView extends View
       , 1
 
   afterAttach: ->
-    output_text = ""
+    output = undefined
+    last_output = undefined
     setInterval =>
       jQuery ($) ->
-        json = $.getJSON "https://api.bitcoinaverage.com/all", '', (data, resp) ->
+        json = $.getJSON "https://api.bitcoinaverage.com/ticker/USD/last", '', (data, resp) ->
           if resp = "success"
-            output_text = data['USD']['averages']['last']
+            output = parseFloat(data).toFixed(2)
+            if output < last_output
+              $(".atom-bitcoin-status").css "color", "green"
+              console.log("Going up #{output} - #{last_output}")
+            else if output > last_output
+              $(".atom-bitcoin-status").css "color", "red"
+              console.log("Going down #{output} - #{last_output}")
+            else
+              $(".atom-bitcoin-status").css "color", "white"
+              console.log("Natural? #{output} - #{last_output}")
           else
             #Handle failed response?
-      @bitcoinInfo.text("$#{parseFloat(output_text).toFixed(2)}")
-    , 1000
+
+      @bitcoinInfo.text("$#{output}")
+      last_output = output
+
+    , 10000
