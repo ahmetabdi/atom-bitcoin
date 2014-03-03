@@ -1,7 +1,7 @@
 {
   "name": "atom-bitcoin",
   "main": "./lib/atom-bitcoin",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Displays the current bitcoin selling price in Atom's status bar",
   "repository": "https://github.com/ahmetabdi/atom-bitcoin",
   "license": "MIT",
