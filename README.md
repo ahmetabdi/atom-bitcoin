@@ -5,7 +5,7 @@ Watch the latest selling price for bitcoin while you code!
 
 ![](screenshot.png)
 
-Update interval fixed to 10 seconds
+Update interval fixed to 5 seconds
 
 Has colour updates to show increase/decrease in price in USD
 

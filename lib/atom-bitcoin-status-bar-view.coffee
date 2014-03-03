@@ -28,17 +28,14 @@ class AtomBitcoinStatusBarView extends View
             output = parseFloat(data).toFixed(2)
             if output < last_output
               $(".atom-bitcoin-status").css "color", "green"
-              console.log("Going up #{output} - #{last_output}")
             else if output > last_output
               $(".atom-bitcoin-status").css "color", "red"
-              console.log("Going down #{output} - #{last_output}")
             else
-              $(".atom-bitcoin-status").css "color", "white"
-              console.log("Natural? #{output} - #{last_output}")
+
           else
             #Handle failed response?
 
       @bitcoinInfo.text("$#{output}")
       last_output = output
 
-    , 10000
+    , 5000
