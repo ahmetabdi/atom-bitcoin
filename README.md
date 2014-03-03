@@ -10,6 +10,7 @@ To install
 `` cd /Users/your_username/.atom/packages ``
 
 `` git clone git@github.com:ahmetabdi/atom-bitcoin.git ``
+
 then restart atom
 
 
