@@ -3,6 +3,9 @@ jQuery = require 'jquery'
 
 module.exports =
 class AtomBitcoinStatusBarView extends View
+  default_interval: 5000
+  load_text: 'Retreiving price...'
+
   @content: ->
     @div class: 'inline-block', =>
       @span outlet: "bitcoinInfo", class: 'atom-bitcoin-status', tabindex: '-1', ""
@@ -19,6 +22,14 @@ class AtomBitcoinStatusBarView extends View
       , 1
 
   afterAttach: ->
+    # Get user settings for interval
+    # Insure it's a number then convert to milliseconds or use default
+    interval = atom.config.get('atom-bitcoin.interval')
+    interval = if not isNaN(interval) then (interval.toFixed() * 1000) else @default_interval
+
+    # Display loading text
+    @display(null)
+
     output = undefined
     last_output = undefined
     setInterval =>
@@ -26,16 +37,22 @@ class AtomBitcoinStatusBarView extends View
         json = $.getJSON "https://api.bitcoinaverage.com/ticker/USD/last", '', (data, resp) ->
           if resp = "success"
             output = parseFloat(data).toFixed(2)
-            if output < last_output
+            if output > last_output
               $(".atom-bitcoin-status").css "color", "green"
-            else if output > last_output
+            else if output < last_output
               $(".atom-bitcoin-status").css "color", "red"
             else
 
           else
             #Handle failed response?
 
-      @bitcoinInfo.text("$#{output}")
+      # Update price
+      @display(output)
       last_output = output
 
-    , 5000
+    , interval # config or default interval
+
+
+  display: (price) ->
+    # Display loading text or current price
+    @bitcoinInfo.text(if not price then @load_text else "$#{price}")
