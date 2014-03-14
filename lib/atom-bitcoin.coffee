@@ -5,4 +5,5 @@ module.exports =
     @atomBitcoinStatusBarView = new AtomBitcoinStatusBarView()
 
   configDefaults:
+    currency: 'USD'
     interval: 5

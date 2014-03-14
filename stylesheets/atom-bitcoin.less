@@ -4,6 +4,16 @@
 // for a full listing of what's available.
 @import "ui-variables";
 
-.atom-bitcoin-status {
-  color: @text-color;
+.atom-bitcoin {
+  .status-stable {
+    color: @text-color;
+  }
+
+  .status-rise {
+    color: @text-color-success;
+  }
+
+  .status-fall {
+    color: @text-color-error;
+  }
 }
